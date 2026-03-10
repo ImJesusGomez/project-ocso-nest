@@ -13,12 +13,16 @@ export class ProductsService {
   ) {}
 
   create(createProductDto: CreateProductDto) {
-    const product = this.productRepository.save(createProductDto);
-    return product;
+    return this.productRepository.save(createProductDto);
   }
 
   findAll() {
-    return this.productRepository.find();
+    return this.productRepository.find({
+      loadEagerRelations: true,
+      relations: {
+        provider: true,
+      },
+    });
   }
 
   async findOne(id: string) {
@@ -29,7 +33,9 @@ export class ProductsService {
     return product;
   }
 
-  // findByProvider(id: string) {}
+  // findByProvider(id: string) {
+  //   return 'OK';
+  // }
 
   async update(id: string, updateProductDto: UpdateProductDto) {
     const productToUpdate = await this.productRepository.preload({
