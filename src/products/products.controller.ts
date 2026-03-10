@@ -30,10 +30,10 @@ export class ProductsController {
     return this.productsService.findOne(id);
   }
 
-  @Get(':id/provider')
-  findByProvider(@Param('id') id: string) {
-    return this.productsService.findByProvider(id);
-  }
+  // @Get(':id/provider')
+  // findByProvider(@Param('id') id: string) {
+  //   return this.productsService.findByProvider(id);
+  // }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
