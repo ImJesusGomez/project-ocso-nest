@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ProvidersService } from './providers.service';
 import { CreateProviderDto } from './dto/create-provider.dto';
 import { UpdateProviderDto } from './dto/update-provider.dto';
@@ -17,18 +25,26 @@ export class ProvidersController {
     return this.providersService.findAll();
   }
 
+  @Get('/name/:name')
+  findOneByName(@Param('name') name: string) {
+    return this.providersService.findOneByName(name);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.providersService.findOne(+id);
+    return this.providersService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProviderDto: UpdateProviderDto) {
-    return this.providersService.update(+id, updateProviderDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateProviderDto: UpdateProviderDto,
+  ) {
+    return this.providersService.update(id, updateProviderDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.providersService.remove(+id);
+    return this.providersService.remove(id);
   }
 }
