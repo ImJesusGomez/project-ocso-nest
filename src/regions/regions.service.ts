@@ -39,8 +39,8 @@ export class RegionsService {
     return this.regionRepository.save(regionToUpdate);
   }
 
-  remove(id: number) {
-    return this.regionRepository.delete({
+  async remove(id: number) {
+    await this.regionRepository.delete({
       regionId: id,
     });
   }

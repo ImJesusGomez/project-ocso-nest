@@ -36,7 +36,7 @@ export class ManagersController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.managersService.remove(id);
+  async remove(@Param('id') id: string) {
+    await this.managersService.remove(id);
   }
 }

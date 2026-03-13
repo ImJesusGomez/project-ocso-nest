@@ -13,7 +13,12 @@ export class ProductsService {
   ) {}
 
   create(createProductDto: CreateProductDto) {
-    return this.productRepository.save(createProductDto);
+    const product = this.productRepository.create({
+      ...createProductDto,
+      provider: { providerId: createProductDto.providerId },
+    });
+
+    return this.productRepository.save(product);
   }
 
   findAll() {
