@@ -1,4 +1,11 @@
-import { IsEmail, IsNumber, IsString, MaxLength } from 'class-validator';
+import {
+  IsEmail,
+  IsNumber,
+  IsObject,
+  IsOptional,
+  IsString,
+  MaxLength,
+} from 'class-validator';
 
 export class CreateManagerDto {
   @IsString()
@@ -15,4 +22,8 @@ export class CreateManagerDto {
   @IsString()
   @MaxLength(16)
   managerPhoneNumber: string;
+
+  @IsObject()
+  @IsOptional()
+  locationId: Location;
 }

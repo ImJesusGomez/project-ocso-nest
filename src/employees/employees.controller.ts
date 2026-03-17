@@ -46,6 +46,12 @@ export class EmployeesController {
     return this.employeesService.findOne(id);
   }
 
+  @Auth(ROLES.MANAGER)
+  @Get('/location/:id')
+  findAllLocation(@Param('id') id: string) {
+    return this.employeesService.findByLocation(+id);
+  }
+
   @Auth(ROLES.EMPLOYEE)
   @Patch(':id')
   update(
