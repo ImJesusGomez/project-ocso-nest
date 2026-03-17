@@ -12,7 +12,7 @@ import {
 @Entity()
 export class Employee {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  employeeId: string;
 
   @Column({ type: 'text' })
   employeeName: string;
