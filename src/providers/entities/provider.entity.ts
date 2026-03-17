@@ -9,7 +9,9 @@ export class Provider {
   @Column('text')
   providerName: string;
 
-  @Column('text')
+  @Column('text', {
+    unique: true,
+  })
   providerEmail: string;
 
   @Column({ type: 'text', nullable: false })
