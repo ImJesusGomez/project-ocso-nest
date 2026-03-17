@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Manager } from '../../managers/entities/manager.entity';
+import { Employee } from 'src/employees/entities/employee.entity';
 
 @Entity()
 export class User {
@@ -15,4 +17,14 @@ export class User {
     default: ['Employee'],
   })
   userRoles: string[];
+
+  @OneToOne(() => Manager, {
+    eager: true,
+  })
+  manager: Manager;
+
+  @OneToOne(() => Employee, {
+    eager: true,
+  })
+  employee: Employee;
 }
