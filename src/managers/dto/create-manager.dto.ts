@@ -6,18 +6,19 @@ import {
   IsString,
   MaxLength,
 } from 'class-validator';
+import { Location } from 'src/locations/entities/location.entity';
 
 export class CreateManagerDto {
   @IsString()
   @MaxLength(80)
   managerFullName: string;
 
-  @IsNumber()
-  managerSalary: number;
-
   @IsString()
   @IsEmail()
   managerEmail: string;
+
+  @IsNumber()
+  managerSalary: number;
 
   @IsString()
   @MaxLength(16)

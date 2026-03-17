@@ -29,17 +29,17 @@ export class EmployeesService {
     });
   }
 
-  async findOne(id: string) {
-    const employee = await this.employeeRepository.findOneBy({ id });
+  async findOne(employeeId: string) {
+    const employee = await this.employeeRepository.findOneBy({ employeeId });
 
     if (!employee) throw new NotFoundException();
 
     return employee;
   }
 
-  async update(id: string, updateEmployeeDto: UpdateEmployeeDto) {
+  async update(employeeId: string, updateEmployeeDto: UpdateEmployeeDto) {
     const employeeToUpdate = await this.employeeRepository.preload({
-      id,
+      employeeId,
       ...updateEmployeeDto,
     });
 
@@ -52,7 +52,7 @@ export class EmployeesService {
   }
 
   async remove(id: string) {
-    const { id: employeeId } = await this.findOne(id);
+    const { employeeId } = await this.findOne(id);
     await this.employeeRepository.delete(employeeId);
 
     return {
