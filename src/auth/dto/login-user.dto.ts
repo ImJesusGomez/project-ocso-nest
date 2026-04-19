@@ -6,12 +6,12 @@ export class LoginUserDto {
     default: 'user@gmail.com',
   })
   @IsEmail()
-  userEmail: string;
+  userEmail!: string;
 
   @ApiProperty({
     default: '23849938',
   })
   @IsString()
   @MinLength(8)
-  userPassword: string;
+  userPassword!: string;
 }
