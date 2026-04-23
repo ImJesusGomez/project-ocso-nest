@@ -6,6 +6,7 @@ import {
   IsString,
   MaxLength,
 } from 'class-validator';
+import { Manager } from 'src/managers/entities/manager.entity';
 import { Region } from 'src/regions/entities/region.entity';
 
 export class CreateLocationDto {
@@ -24,4 +25,8 @@ export class CreateLocationDto {
   @IsObject()
   @IsOptional()
   regionId: Region;
+
+  @IsObject()
+  @IsOptional
+  manager: Manager;
 }
