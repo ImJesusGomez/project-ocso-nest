@@ -24,7 +24,7 @@ export class CreateManagerDto {
   @MaxLength(16)
   managerPhoneNumber: string;
 
-  @IsObject()
+  @IsNumber()
   @IsOptional()
   locationId: Location;
 }
